@@ -15,7 +15,7 @@ from Ryan Bates.
 Add to your Gemfile and run the `bundle` command to install it.
 
  ```ruby
- gem 'asc_desc'
+ gem 'asc_desc', git: 'git@github.com:dwerlen/asc_desc.git'
  ```
 
 **Requires Ruby 1.8.7 or later.**
