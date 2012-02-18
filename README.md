@@ -1,4 +1,4 @@
-# asc_desc [![Build Status](https://secure.travis-ci.org/dwerlen/asc_desc.png)](https://secure.travis-ci.org/dwerlen/asc_desc.png)
+# asc_desc [![Build Status](https://secure.travis-ci.org/dwerlen/asc_desc.png)](https://secure.travis-ci.org/dwerlen/asc_desc)
 
 This gem adds two new methods to ActiveRecord (and ActiveRecord::Relation) that allow to sort SQL queries without using
 the "ASC" and "DESC" SQL keywords.
