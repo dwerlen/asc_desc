@@ -1,6 +1,6 @@
 # asc_desc
 
-This gem adds to new methods to ActiveRecord and ActiveRelation that allows to sort SQL queries without using the "ASC" and "DESC" SQL keywords.
+This gem adds two new methods to ActiveRecord (and ActiveRecord::Relation) that allow to sort SQL queries without using the "ASC" and "DESC" SQL keywords.
 
 ## Installation
 
@@ -15,7 +15,7 @@ Add to your Gemfile and run the `bundle` command to install it.
 
 ## Usage
 
-Call `asc` on an ActiveRecord object or on an ActiveRelation object to sort the column(s) in an ascending way.
+Call `asc` on an ActiveRecord object or on an ActiveRecord::Relation object to sort the column(s) in an ascending way.
 
  ```ruby
  # using a symbol for the name of the column
@@ -34,7 +34,7 @@ Call `asc` on an ActiveRecord object or on an ActiveRelation object to sort the 
  Candy.where(:sugar => true).asc('classification, name')
  ```
 
-Call `desc` on an ActiveRecord object or on an ActiveRelation object to sort the column(s) in an descending way.
+Call `desc` on an ActiveRecord object or on an ActiveRecord::Relation object to sort the column(s) in a descending way.
 
  ```ruby
  # using a symbol for the name of the column
