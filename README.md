@@ -51,6 +51,11 @@ Call `asc` on an ActiveRecord object or on an ActiveRecord::Relation object to s
  Candy.where(:sugar => true).asc(:classification).asc(:name)
  ```
 
+`ascending` is an alias of `asc`.
+
+`ascending_order` is an alias of `asc`.
+
+
 Call `desc` on an ActiveRecord object or on an ActiveRecord::Relation object to sort the column(s) in a descending way.
 
  ```ruby
@@ -72,6 +77,11 @@ Call `desc` on an ActiveRecord object or on an ActiveRecord::Relation object to 
  # the method is chainable
  Candy.where(:sugar => true).desc(:classification).desc(:name)
  ```
+
+`descending` is an alias of `desc`.
+
+`descending_order` is an alias of `desc`.
+ 
 
 ## Development
 

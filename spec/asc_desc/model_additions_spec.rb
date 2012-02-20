@@ -65,7 +65,7 @@ describe AscDesc::ModelAdditions do
       candies.to_sql.should be_end_with('ORDER BY classification ASC, name ASC, sugar ASC')
     end
 
-    it 'can formata string to specify more than one column for the sort clause' do
+    it 'can format a string to specify more than one column for the sort clause' do
       candies = Candy.asc('classification, name', :sugar)
       candies.to_sql.should be_end_with('ORDER BY classification ASC, name ASC, sugar ASC')
 
@@ -119,7 +119,7 @@ describe AscDesc::ModelAdditions do
       candies.to_sql.should be_end_with('ORDER BY classification DESC, name DESC, sugar DESC')
     end
 
-    it 'can formata string to specify more than one column for the sort clause' do
+    it 'can format a string to specify more than one column for the sort clause' do
       candies = Candy.desc('classification, name', :sugar)
       candies.to_sql.should be_end_with('ORDER BY classification DESC, name DESC, sugar DESC')
 
