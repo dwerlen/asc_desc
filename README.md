@@ -17,7 +17,7 @@ It was conducted on the basis of the excellent tutorials from Ryan Bates, namely
 Add to your Gemfile and run the `bundle` command to install it.
 
  ```ruby
- gem 'asc_desc', git: 'git@github.com:dwerlen/asc_desc.git'
+ gem 'asc_desc'
  ```
 
 
