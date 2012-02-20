@@ -21,7 +21,7 @@ Add to your Gemfile and run the `bundle` command to install it.
  ```
 
 
-## requirements
+## Requirements
 
 * Ruby 1.8.7 or later
 * Ruby on Rails 3.0 or later
