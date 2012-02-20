@@ -11,9 +11,9 @@ module AscDesc
     order = args.last
     args[0..-2].map do |column|
       if column.is_a?(Array)
-        format_order_clause(*column, order)
+        format_order_clause(*column << order)
       elsif column.respond_to?('include?') and column.include?(?,)
-        format_order_clause(*column.split(?,), order)
+        format_order_clause(*column.split(?,) << order)
       else
         "#{column.to_s.strip} #{order}"
       end
