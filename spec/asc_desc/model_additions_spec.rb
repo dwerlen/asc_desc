@@ -16,6 +16,21 @@ describe AscDesc::ModelAdditions do
     end
   end
 
+  with_model :Bonbon do
+    # The table block works just like a migration.
+    table :primary_key => :id_bonbon do |t|
+      t.string  :name
+      t.string  :classification
+      t.boolean :sugar
+      t.timestamps
+    end
+    # The model block works just like the class definition.
+    model do
+      extend AscDesc::ModelAdditions
+      self.primary_key = :id_bonbon
+    end
+  end
+
   it 'respond to a class method named "asc"' do
     Candy.respond_to?(:asc).should be_true
     Candy.respond_to?(:ascending).should be_true
@@ -73,11 +88,22 @@ describe AscDesc::ModelAdditions do
       candies.to_sql.should be_end_with('ORDER BY classification ASC, name ASC, sugar ASC')
     end
 
+    it 'generates a sort by id when no argument is passed' do
+      candies = Candy.asc
+      candies.to_sql.should be_end_with('ORDER BY id ASC')
+    end
+
+    it 'generates a sort by id when no argument is passed even with a custom primary key' do
+      bonbons = Bonbon.asc
+      bonbons.to_sql.should be_end_with('ORDER BY id_bonbon ASC')
+    end
+
     it 'should be chainable' do
       candies = Candy.asc(:name)
+      candies = candies.asc
       candies = candies.asc(:sugar)
       candies.should be_an_instance_of(ActiveRecord::Relation)
-      candies.to_sql.should be_end_with('ORDER BY name ASC, sugar ASC')
+      candies.to_sql.should be_end_with('ORDER BY name ASC, id ASC, sugar ASC')
     end
 
   end
@@ -127,11 +153,22 @@ describe AscDesc::ModelAdditions do
       candies.to_sql.should be_end_with('ORDER BY classification DESC, name DESC, sugar DESC')
     end
 
+    it 'generates a sort by id when no argument is passed' do
+      candies = Candy.desc
+      candies.to_sql.should be_end_with('ORDER BY id DESC')
+    end
+
+    it 'generates a sort by id when no argument is passed even with a custom primary key' do
+      bonbons = Bonbon.desc
+      bonbons.to_sql.should be_end_with('ORDER BY id_bonbon DESC')
+    end
+
     it 'should be chainable' do
       candies = Candy.desc(:name)
+      candies = candies.desc
       candies = candies.desc(:sugar)
       candies.should be_an_instance_of(ActiveRecord::Relation)
-      candies.to_sql.should be_end_with('ORDER BY name DESC, sugar DESC')
+      candies.to_sql.should be_end_with('ORDER BY name DESC, id DESC, sugar DESC')
     end
 
   end

@@ -47,6 +47,10 @@ Call `asc` on an ActiveRecord object or on an ActiveRecord::Relation object to s
  # using a string to specify more than one column for the sort clause
  Candy.where(:sugar => true).asc('classification, name')
  
+ # without argument, the method generates a sort by id (custom primary key supported)
+ # SELECT "candies".* FROM "candies" ORDER BY id ASC
+ Candy.where(:sugar => true).asc
+ 
  # the method is chainable
  Candy.where(:sugar => true).asc(:classification).asc(:name)
  ```
@@ -71,6 +75,10 @@ Call `desc` on an ActiveRecord object or on an ActiveRecord::Relation object to 
  
  # using a string to specify more than one column for the sort clause
  Candy.where(:sugar => true).desc('classification, name')
+ 
+ # without argument, the method generates a sort by id (custom primary key supported)
+ # SELECT "candies".* FROM "candies" ORDER BY id DESC
+ Candy.where(:sugar => true).desc
  
  # the method is chainable
  Candy.where(:sugar => true).desc(:classification).desc(:name)

@@ -44,7 +44,7 @@ describe AscDesc do
       AscDesc.format_order_clause(['classification', 'name'], 'sugar', AscDesc::DESC).should eq('classification DESC, name DESC, sugar DESC')
     end
 
-    it 'can formata string to specify more than one column for the sort clause' do
+    it 'can format a string to specify more than one column for the sort clause' do
       AscDesc.format_order_clause('classification, name', :sugar, AscDesc::ASC).should eq('classification ASC, name ASC, sugar ASC')
       AscDesc.format_order_clause(['classification, name', :sugar], AscDesc::ASC).should eq('classification ASC, name ASC, sugar ASC')
     end

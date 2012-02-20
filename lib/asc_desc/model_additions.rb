@@ -19,11 +19,15 @@ module AscDesc
     # using a string to specify more than one column for the sort clause
     #   Candy.where(:sugar => true).asc('classification, name')
     #
+    # without argument, the method generates a sort by id (custom primary key supported)
+    #   SELECT "candies".* FROM "candies" ORDER BY id ASC
+    #   Candy.where(:sugar => true).asc
+    #
     # the method is chainable
     #   Candy.where(:sugar => true).asc(:classification).asc(:name)
     #
     def asc(*args)
-      self.order AscDesc.format_order_clause(*args << AscDesc::ASC)
+      self.order AscDesc.format_order_clause(*(args.presence || [self.primary_key]) << AscDesc::ASC)
     end
     alias :ascending :asc
     alias :ascending_order :asc
@@ -47,11 +51,15 @@ module AscDesc
     # using a string to specify more than one column for the sort clause
     #   Candy.where(:sugar => true).desc('classification, name')
     #
+    # without argument, the method generates a sort by id (custom primary key supported)
+    #   SELECT "candies".* FROM "candies" ORDER BY id DESC
+    #   Candy.where(:sugar => true).desc
+    #
     # the method is chainable
     #   Candy.where(:sugar => true).desc(:classification).desc(:name)
     #
     def desc(*args)
-      self.order AscDesc.format_order_clause(*args << AscDesc::DESC)
+      self.order AscDesc.format_order_clause(*(args.presence || [self.primary_key]) << AscDesc::DESC)
     end
     alias :descending :desc
     alias :descending_order :desc
