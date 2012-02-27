@@ -91,11 +91,35 @@ Call `desc` on an ActiveRecord object or on an ActiveRecord::Relation object to 
 `descending` and `descending_order` are aliases of `desc`.
 
 
-### order_by
+### dynamic order_by
 
-The current version of this gem introduces a new method called `order_by`. At this time, it's just an alias of the
-built-in `order` method but will be extended in future versions of the library.
+The **dynamic order_by mechanism** is built the same way as the dynamic finders present from the beginning of
+Ruby On Rails and allows to easely write the order clause for ActiveRecord queries.
 
+  ````ruby
+  # a call to order_by just acts like the standard built-in "order" method (alias)
+  Candy.where(:sugar => true).order_by('classification ASC, name ASC')
+  
+  # using a column as part of the method name
+  Candy.where(:sugar => true).order_by_name
+  
+  # using a column and a sort direction (asc|desc) as part of the method name
+  Candy.where(:sugar => true).order_by_name_asc
+  Candy.where(:sugar => true).order_by_name_desc
+  
+  # using multiple columns as part of the method name
+  Candy.where(:sugar => true).order_by_classification_and_name
+  Candy.where(:sugar => true).order_by_classification_and_name_and_sugar
+  
+  # using multiple columns and sort directions (asc|desc) as part of the method name
+  Candy.where(:sugar => true).order_by_classification_asc_and_name_desc
+  Candy.where(:sugar => true).order_by_classification_desc_and_name_asc
+  Candy.where(:sugar => true).order_by_classification_asc_and_name_desc_and_sugar_asc
+  
+  # using multiple columns with or without sort direction (asc|desc) as part of the method name
+  Candy.where(:sugar => true).order_by_classification_and_name_desc
+  Candy.where(:sugar => true).order_by_classification_desc_and_name
+  ```
 
 ## Development
 

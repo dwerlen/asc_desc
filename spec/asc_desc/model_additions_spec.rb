@@ -196,4 +196,53 @@ describe AscDesc::ModelAdditions do
 
   end
 
+  describe 'dynamic order_by' do
+
+    it 'should return an ActiveRecord Relation' do
+      candies = Candy.order_by_name
+      candies.should be_an_instance_of(ActiveRecord::Relation)
+    end
+
+    it 'should generate an order clause using a column as part of the method name' do
+      candies = Candy.order_by_name
+      candies.to_sql.should be_end_with('ORDER BY name ASC')
+    end
+
+    it 'should generate an order clause using a column and a sort direction (asc/desc) as part of the method name' do
+      candies = Candy.order_by_name_asc
+      candies.to_sql.should be_end_with('ORDER BY name ASC')
+
+      candies = Candy.order_by_name_desc
+      candies.to_sql.should be_end_with('ORDER BY name DESC')
+    end
+
+    it 'should generate an order clause using multiple columns as part of the method name' do
+      candies = Candy.order_by_classification_and_name
+      candies.to_sql.should be_end_with('ORDER BY classification ASC, name ASC')
+
+      candies = Candy.order_by_classification_and_name_and_sugar
+      candies.to_sql.should be_end_with('ORDER BY classification ASC, name ASC, sugar ASC')
+    end
+
+    it 'should generate an order clause using multiple columns and sort directions (asc/desc) as part of the method name' do
+      candies = Candy.order_by_classification_asc_and_name_desc
+      candies.to_sql.should be_end_with('ORDER BY classification ASC, name DESC')
+
+      candies = Candy.order_by_classification_desc_and_name_asc
+      candies.to_sql.should be_end_with('ORDER BY classification DESC, name ASC')
+
+      candies = Candy.order_by_classification_asc_and_name_desc_and_sugar_asc
+      candies.to_sql.should be_end_with('ORDER BY classification ASC, name DESC, sugar ASC')
+    end
+
+    it 'should generate an order clause using multiple columns with or without sort direction (asc/desc) as part of the method name' do
+      candies = Candy.order_by_classification_and_name_desc
+      candies.to_sql.should be_end_with('ORDER BY classification ASC, name DESC')
+
+      candies = Candy.order_by_classification_desc_and_name
+      candies.to_sql.should be_end_with('ORDER BY classification DESC, name ASC')
+    end
+
+  end
+
 end
