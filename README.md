@@ -29,6 +29,8 @@ Add to your Gemfile and run the `bundle` command to install it.
 
 ## Usage
 
+### asc
+
 Call `asc` on an ActiveRecord object or on an ActiveRecord::Relation object to sort the column(s) in an ascending way.
 
  ```ruby
@@ -41,7 +43,7 @@ Call `asc` on an ActiveRecord object or on an ActiveRecord::Relation object to s
  # using multiple parameters to specify more than one column for the sort clause
  Candy.where(:sugar => true).asc(:classification, :name)
 
- # using an array to pass mutliple argument
+ # using an array to pass mutliple arguments
  Candy.where(:sugar => true).asc([:classification, :name])
  
  # using a string to specify more than one column for the sort clause
@@ -58,6 +60,8 @@ Call `asc` on an ActiveRecord object or on an ActiveRecord::Relation object to s
 `ascending` and `ascending_order` are aliases of `asc`.
 
 
+### desc
+
 Call `desc` on an ActiveRecord object or on an ActiveRecord::Relation object to sort the column(s) in a descending way.
 
  ```ruby
@@ -70,7 +74,7 @@ Call `desc` on an ActiveRecord object or on an ActiveRecord::Relation object to 
  # using multiple parameters to specify more than one column for the sort clause
  Candy.where(:sugar => true).desc(:classification, :name)
  
- # using an array to pass mutliple argument
+ # using an array to pass mutliple arguments
  Candy.where(:sugar => true).desc([:classification, :name])
  
  # using a string to specify more than one column for the sort clause
@@ -85,6 +89,12 @@ Call `desc` on an ActiveRecord object or on an ActiveRecord::Relation object to 
  ```
 
 `descending` and `descending_order` are aliases of `desc`.
+
+
+### order_by
+
+The current version of this gem introduces a new method called `order_by`. At this time, it's just an alias of the
+built-in `order` method but will be extended in future versions of the library.
 
 
 ## Development

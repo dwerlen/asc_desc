@@ -35,7 +35,7 @@ describe AscDesc do
       AscDesc.format_order_clause('classification', 'name', AscDesc::DESC).should eq('classification DESC, name DESC')
     end
 
-    it 'can format an array as mutliple argument' do
+    it 'can format an array as mutliple arguments' do
       AscDesc.format_order_clause([:classification, :name], AscDesc::ASC).should eq('classification ASC, name ASC')
       AscDesc.format_order_clause([:classification, :name], AscDesc::DESC).should eq('classification DESC, name DESC')
       AscDesc.format_order_clause([:classification, :name], :sugar, AscDesc::DESC).should eq('classification DESC, name DESC, sugar DESC')

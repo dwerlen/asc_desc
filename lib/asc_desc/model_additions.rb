@@ -64,5 +64,14 @@ module AscDesc
     alias :descending :desc
     alias :descending_order :desc
 
+
+    # alias of the built-in `order` method.
+    #
+    # Will be extended in future versions of the library.
+    #
+    def order_by(*args)
+      self.order(*args)
+    end
+
   end
 end

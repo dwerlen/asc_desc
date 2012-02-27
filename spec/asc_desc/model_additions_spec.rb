@@ -43,6 +43,10 @@ describe AscDesc::ModelAdditions do
     Candy.respond_to?(:descending_order).should be_true
   end
 
+  it 'respond to a class method named "order_by"' do
+    Candy.respond_to?(:order_by).should be_true
+  end
+
   describe '.asc' do
 
     it 'should return an ActiveRecord Relation' do
@@ -68,7 +72,7 @@ describe AscDesc::ModelAdditions do
       candies.to_sql.should be_end_with('ORDER BY classification ASC, name ASC')
     end
 
-    it 'can format an array as mutliple argument' do
+    it 'can format an array as mutliple arguments' do
       candies = Candy.asc([:classification, :name])
       candies.to_sql.should be_end_with('ORDER BY classification ASC, name ASC')
       candies = Candy.asc([:classification, :name], :sugar)
@@ -133,7 +137,7 @@ describe AscDesc::ModelAdditions do
       candies.to_sql.should be_end_with('ORDER BY classification DESC, name DESC')
     end
 
-    it 'can format an array as mutliple argument' do
+    it 'can format an array as mutliple arguments' do
       candies = Candy.desc([:classification, :name])
       candies.to_sql.should be_end_with('ORDER BY classification DESC, name DESC')
       candies = Candy.desc([:classification, :name], :sugar)
@@ -169,6 +173,25 @@ describe AscDesc::ModelAdditions do
       candies = candies.desc(:sugar)
       candies.should be_an_instance_of(ActiveRecord::Relation)
       candies.to_sql.should be_end_with('ORDER BY name DESC, id DESC, sugar DESC')
+    end
+
+  end
+
+  describe '.order_by' do
+
+    it 'should return an ActiveRecord Relation' do
+      candies = Candy.order_by(:name)
+      candies.should be_an_instance_of(ActiveRecord::Relation)
+    end
+
+    it 'should define the "ORDER BY" clause of the underlying SQL query' do
+      candies = Candy.order_by('classification ASC, name DESC')
+      candies.to_sql.should be_end_with('ORDER BY classification ASC, name DESC')
+    end
+
+    it 'should accept multiple parameters' do
+      candies = Candy.order_by('classification DESC', 'name ASC')
+      candies.to_sql.should be_end_with('ORDER BY classification DESC, name ASC')
     end
 
   end

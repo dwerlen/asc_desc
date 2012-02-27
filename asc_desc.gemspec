@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.email       = ['werlen@icare.ch']
   s.homepage    = 'http://github.com/dwerlen/asc_desc'
   s.summary     = %q{add "asc" and "desc" methods to ActiveRecord}
-  s.description = %q{This gem adds two new methods to ActiveRecord (and ActiveRecord::Relation) that allow to sort SQL queries without using the "ASC" and "DESC" SQL keywords.}
+  s.description = %q{This gem adds two new methods to ActiveRecord (and ActiveRecord::Relation) that allows to sort SQL queries without using the "ASC" and "DESC" SQL keywords.}
 
   s.rubyforge_project = 'asc_desc'
 
