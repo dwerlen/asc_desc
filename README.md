@@ -3,14 +3,6 @@
 This gem adds two new methods to ActiveRecord (and ActiveRecord::Relation) that allows to sort SQL queries without using
 the "ASC" and "DESC" SQL keywords.
 
-## Remark
-
-`asc_desc` was developed in order to experiment the creation of a ruby gem. 
-It was conducted on the basis of the excellent tutorials from Ryan Bates, namely:
-
-* ["#301 Extracting a Ruby Gem"](http://railscasts.com/episodes/301-extracting-a-ruby-gem)
-* ["#303 Publishing a Gem"](http://railscasts.com/episodes/303-publishing-a-gem)
-
 
 ## Installation
 
@@ -128,3 +120,13 @@ You can contribute changes by forking the project and submitting a pull request.
 You can ensure the tests passing by running `bundle` and `rake`.
 
 This gem is created by David Werlen and is under the MIT License.
+
+
+## Remark
+
+`asc_desc` was developed in order to experiment the creation of a ruby gem. 
+It was conducted on the basis of the excellent tutorials from Ryan Bates, namely:
+
+* ["#301 Extracting a Ruby Gem"](http://railscasts.com/episodes/301-extracting-a-ruby-gem)
+* ["#303 Publishing a Gem"](http://railscasts.com/episodes/303-publishing-a-gem)
+
