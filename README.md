@@ -1,7 +1,7 @@
 # asc_desc [![Build Status](https://secure.travis-ci.org/dwerlen/asc_desc.png)](https://secure.travis-ci.org/dwerlen/asc_desc)
 
 This gem adds two new methods to ActiveRecord (and ActiveRecord::Relation) that allows to sort SQL queries without using
-the "ASC" and "DESC" SQL keywords.
+the "ASC" and "DESC" SQL keywords. It also adds a dynamic "order_by" mechanism (in the same way as dynamic finders).
 
 
 ## Installation
